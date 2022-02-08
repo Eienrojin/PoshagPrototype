@@ -30,6 +30,11 @@ namespace PoshagPrototype
         {
             Name = name;
             Health = health;
+
+            if (name == "")
+            {
+                Name = "Враг класса unit";
+            }
         }
 
         public void Destroy() 
@@ -49,7 +54,7 @@ namespace PoshagPrototype
 
         public override string ToString()
         {
-            return $"Враг - {Name}\nЗдоровье = {Health}\n";
+            return $"Юнит - {Name}\nЗдоровье = {Health}\n";
         }
     }
 }

@@ -10,19 +10,35 @@ namespace PoshagPrototype
     {
         static void Main(string[] args)
         {
+            Player igor = new Player(GetName(), 5);
+            Sword sword = new Sword("Меч", 15, 15);
 
+            Console.WriteLine(igor);
+            Console.WriteLine(sword);
+            Console.ReadKey();
+
+            PrintAllObjects();
         }
 
-        void PrintAllObjects()
+        static string GetName()
         {
             Random random = new Random();
 
-            Player player = new Player("Игорь", 300);
-            Player player2 = new Player("Васян", 100);
-            Player player3 = new Player("Вано", 500);
+            string[] names = { "Игорь", "Васян", "Вано", "Кирилл", "Шрам", "Неизвестный" };
 
-            WeakEnemy rat = new WeakEnemy("Крыса", random.Next(10, 30));
-            MediumEnemy goblin = new MediumEnemy("Гоблин", random.Next(25, 50));
+            string name = names[random.Next(0, names.Length)];
+
+            return name;
+        }
+
+        static void PrintAllObjects()
+        {
+            Random random = new Random();
+
+            Player[] players = new Player[2];
+
+            WeakEnemy weakEnemy = new WeakEnemy("", random.Next(10, 30));
+            MediumEnemy mediumEnemy = new MediumEnemy("", random.Next(25, 50));
             StrongEnemy bandit = new StrongEnemy("Бандит", random.Next(50, 80));
 
             Barrel barrel = new Barrel("Бочка", 32);
@@ -35,16 +51,12 @@ namespace PoshagPrototype
             Hammer hammer = new Hammer("Железный молот", 3, 5);
             Sword sword = new Sword("Железный меч", 5, 5);
 
-            Console.WriteLine(player);
-            Console.WriteLine(player2);
-            Console.WriteLine(player3);
-
             Console.WriteLine(barrel);
             Console.WriteLine(chest);
             Console.WriteLine(crate);
 
-            Console.WriteLine(rat);
-            Console.WriteLine(goblin);
+            Console.WriteLine(weakEnemy);
+            Console.WriteLine(mediumEnemy);
             Console.WriteLine(bandit);
 
             Console.WriteLine(chestplate);

@@ -10,8 +10,21 @@ namespace PoshagPrototype
     {
         public MediumEnemy(string name, int health) : base(name, health)
         {
+            if (name == "")
+            {
+                Name = GetRandomName();
+            }
         }
 
-        
+        static string GetRandomName()
+        {
+            Random random = new Random();
+
+            string[] names = { "Волк", "Лис", "Молодой бандит" };
+
+            string randomName = names[random.Next(0, names.Length)];
+
+            return randomName;
+        }
     }
 }
