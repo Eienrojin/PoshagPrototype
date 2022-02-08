@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="PoshagPrototype.Armor">
+    <Position X="24" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAgAAAAEAAAAAAQAAABAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Abstract Classes\Armor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PoshagPrototype.Loot" Collapsed="true">
+    <Position X="36" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAgAAAAAAEAAAAAAACAAA=</HashCode>
+      <FileName>Abstract Classes\Loot.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PoshagPrototype.Unit">
+    <Position X="26.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAgAAgAAAAEAAAAAAQAAABAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Abstract Classes\Unit.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PoshagPrototype.Weapon">
+    <Position X="19" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACgAAgAAAAEAAAAAAQAAABAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Abstract Classes\Weapon.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PoshagPrototype.MediumEnemy">
+    <Position X="31.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Creatures\Moveable\Enemies\MediumEnemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PoshagPrototype.StrongEnemy">
+    <Position X="18.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Creatures\Moveable\Enemies\StrongEnemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PoshagPrototype.WeakEnemy">
+    <Position X="20.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Creatures\Moveable\Enemies\WeakEnemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PoshagPrototype.Player" Collapsed="true">
+    <Position X="29.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAgAAAAEAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Creatures\Moveable\Players\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PoshagPrototype.Barrel">
+    <Position X="25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAgAAAAAAAAAAAgAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Creatures\Unmoveable\Barrel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PoshagPrototype.Chest">
+    <Position X="27.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAgAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Creatures\Unmoveable\Chest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PoshagPrototype.Crate">
+    <Position X="22.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAgAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Creatures\Unmoveable\Crate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PoshagPrototype.Unmoveable">
+    <Position X="24.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Creatures\Unmoveable\Unmoveable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PoshagPrototype.Chestplate">
+    <Position X="25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Loot\Armor\Chestplate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PoshagPrototype.Helmet">
+    <Position X="22.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Loot\Armor\Helmet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PoshagPrototype.Hammer">
+    <Position X="17.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Loot\Weapon\Hammer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PoshagPrototype.Sword">
+    <Position X="20" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Loot\Weapon\Sword.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PoshagPrototype.GameOver" Collapsed="true">
+    <Position X="34.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Menu\GameOver.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PoshagPrototype.Program" Collapsed="true">
+    <Position X="34.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="PoshagPrototype.IAction" Collapsed="true">
+    <Position X="34.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAgAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IAction.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PoshagPrototype.ILoot" Collapsed="true">
+    <Position X="36" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAgAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\ILoot.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
