@@ -58,6 +58,7 @@
     <Compile Include="Abstract Classes\Loot.cs" />
     <Compile Include="Creatures\Moveable\Enemies\MediumEnemy.cs" />
     <Compile Include="Creatures\Moveable\Players\Player.cs" />
+    <Compile Include="Menu\Warning.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Abstract Classes\Unit.cs" />
