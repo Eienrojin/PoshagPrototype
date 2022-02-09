@@ -1,50 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace PoshagPrototype
+﻿namespace PoshagPrototype
 {
     /// <summary>
     /// Абстрактный класс Добыча
     /// </summary>
     internal class Loot : ILoot
     {
-        public void RemoveItem(int index, List<ILoot> obj)
+        public void AddItem()
         {
-            while (true)
-            {
-                bool isSafe = true;
+            
+        }
 
-                Console.WriteLine("Введите номер предмета, который вы хотите выкинуть (вернуть предмет назад нельзя!)");
-
-                try
-                {
-                    index = int.Parse(Console.ReadLine());
-                }
-                catch (FormatException)
-                {
-                    isSafe = false;
-                    Warning.ShowWarning(0);
-                }
-
-                if (isSafe)
-                {
-                    break;
-                }
-            }
-
-            if (index >= 0 || index <= obj.Count)
-            {
-                obj.RemoveAt(index);
-            }
-            else
-            {
-                Warning.ShowOutOfRange();
-            }
+        public void RemoveItem()
+        {
+            throw new System.NotImplementedException();
         }
 
         public void UseItem()
         {
-            throw new NotImplementedException();
+            throw new System.NotImplementedException();
+        }
+
+        void ShowInvetory()
+        {
+
         }
     }
 }

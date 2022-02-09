@@ -24,9 +24,9 @@ namespace PoshagPrototype
         /// <summary>
         /// Инвентарь персонажа
         /// </summary>
-        public List<ILoot> Inventory { get; set; }
+        public List<Loot[]> Inventory { get; set; }
 
-        public Unit(string name, int health)
+        protected Unit(string name, int health)
         {
             Name = name;
             Health = health;

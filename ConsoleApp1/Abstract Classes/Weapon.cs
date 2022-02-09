@@ -1,16 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace PoshagPrototype
 {
     /// <summary>
     /// Абстрактный класс Оружие
     /// </summary>
-    internal abstract class Weapon : Loot, IAction
+    internal abstract class Weapon : IAction
     {
         public int Damage { get; set; }
         public int Durability { get; set; }
-        public string Name { get; set; }
+        public string Name { get; set; } = "Оружие";
 
         protected Weapon(string Name, int Damage, int Durability)
         {
@@ -31,7 +30,7 @@ namespace PoshagPrototype
 
         public void GetDamage(int damage)
         {
-            Durability -= damage;
+            throw new System.NotImplementedException();
         }
 
         public void Destroy()
@@ -43,7 +42,7 @@ namespace PoshagPrototype
         {
             Random random = new Random();
 
-            string[] names = { "Заточка", "Ржавый гвоздь", "Кривой меч", "Острый кактус", "Красивый болт", "Новый дрын" };
+            string[] names = { "Железный", "Ржавый", "Кривой", "Острый", "Красивый", "Новый" };
 
             string name = names[random.Next(0, names.Length)];
 

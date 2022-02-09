@@ -14,17 +14,17 @@ namespace PoshagPrototype
             {
                 Name = GetRandomName();
             }
-        }
 
-        string GetRandomName()
-        {
-            Random random = new Random();
+            string GetRandomName()
+            {
+                Random random = new Random();
 
-            string[] names = { "Крыса", "Таракан", "Микропёс" };
+                string[] names = { "Крыса", "Таракан", "Микропёс" };
 
-            string randomName = names[random.Next(0, names.Length)];
+                string randomName = names[random.Next(0, names.Length)];
 
-            return randomName;
+                return randomName;
+            }
         }
     }
 }
