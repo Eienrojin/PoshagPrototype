@@ -12,9 +12,13 @@ namespace PoshagPrototype
         {
         }
 
-        public void Explode()
+        public void Explode(Player obj)
         {
-            
+            Random random = new Random();
+
+            GetDamage(random.Next(5, 20));
+
+            Console.WriteLine("А бочка была красная! Порох отнял у вас здоровье");
         }
 
         public void Cure(int treatment)
@@ -24,7 +28,7 @@ namespace PoshagPrototype
 
         public void GetDamage(int damage)
         {
-            throw new NotImplementedException();
+            Health -= damage;
         }
 
         public void Destroy()

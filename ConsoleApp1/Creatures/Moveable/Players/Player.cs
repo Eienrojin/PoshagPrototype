@@ -10,9 +10,11 @@ namespace PoshagPrototype
     {
         public Player(string name, int health) : base(name, health)
         {
+            if (name == "")
+            {
+                Name = GetName();
+            }
         }
-
-        Loot inventory = new Loot();
 
         public void Destroy()
         {
@@ -55,6 +57,17 @@ namespace PoshagPrototype
         public void Cure(int treatment)
         {
             throw new NotImplementedException();
+        }
+
+        string GetName()
+        {
+            Random random = new Random();
+
+            string[] names = { "Игорь", "Васян", "Вано", "Кирилл", "Шрам", "Неизвестный" };
+
+            string name = names[random.Next(0, names.Length)];
+
+            return name;
         }
 
         public override string ToString()
