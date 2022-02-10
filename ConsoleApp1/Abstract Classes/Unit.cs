@@ -42,9 +42,10 @@ namespace PoshagPrototype
             Console.WriteLine("Персонаж погиб!");
         }
 
-        public void GetDamage(int damage)
+        public int GetDamage(int damage)
         {
             Health -= damage;
+            return Health;
         }
 
         public void Cure(int treatment)

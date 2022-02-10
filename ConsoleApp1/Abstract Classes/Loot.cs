@@ -42,9 +42,9 @@ namespace PoshagPrototype
             }
         }
 
-        public void UseItem()
+        public ILoot UseItem()
         {
-            throw new NotImplementedException();
+            return this;
         }
     }
 }

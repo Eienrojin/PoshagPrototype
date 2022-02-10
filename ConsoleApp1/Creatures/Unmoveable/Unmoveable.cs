@@ -12,6 +12,21 @@ namespace PoshagPrototype
         {
         }
 
+        public void Cure(int treatment)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GetDamage(int damage)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Destroy()
+        {
+            throw new NotImplementedException();
+        }
+
         public override string ToString()
         {
             return $"{Name}\nОсталось прочности - {Health}\n";

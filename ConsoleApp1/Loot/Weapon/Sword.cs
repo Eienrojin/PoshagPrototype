@@ -11,5 +11,7 @@ namespace PoshagPrototype
         public Sword(string Name, int Damage, int Durability) : base(Name, Damage, Durability)
         {
         }
+
+        public string Material { get; set; }
     }
 }

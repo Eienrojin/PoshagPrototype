@@ -17,7 +17,7 @@ namespace PoshagPrototype
         /// Метод для описания уменьшения здоровья обьекта, в последствии взаимодействия с чем-то 
         /// </summary>
         /// <param name="damage">Входящий урон</param>
-        void GetDamage(int damage);
+        int GetDamage(int damage);
 
         /// <summary>
         /// Метод для описания увелечения здоровья обьекта, в последствии взаимодействия с чем-то

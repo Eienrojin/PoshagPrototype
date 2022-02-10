@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PoshagPrototype
 {
-    internal class Player : Unit
+    internal class Player : Unit, IAction
     {
         public Player(string name, int health) : base(name, health)
         {
@@ -15,6 +15,9 @@ namespace PoshagPrototype
                 Name = GetName();
             }
         }
+
+        public Weapon WeaponSlot1 {get; set;}
+        public Weapon WeaponSlot2 {get; set;}
 
         public void Destroy()
         {

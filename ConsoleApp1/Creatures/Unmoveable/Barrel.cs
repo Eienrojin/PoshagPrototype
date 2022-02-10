@@ -18,22 +18,7 @@ namespace PoshagPrototype
 
             GetDamage(random.Next(5, 20));
 
-            Console.WriteLine("А бочка была красная! Порох отнял у вас здоровье");
-        }
-
-        public void Cure(int treatment)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void GetDamage(int damage)
-        {
-            Health -= damage;
-        }
-
-        public void Destroy()
-        {
-            throw new NotImplementedException();
+            Console.WriteLine("А бочка была красная! Порох взорвался и отнял у вас здоровье");
         }
     }
 }

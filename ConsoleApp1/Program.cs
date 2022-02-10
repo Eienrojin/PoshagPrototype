@@ -19,7 +19,24 @@ namespace PoshagPrototype
     {
         static void Main(string[] args)
         {
-            Fight();
+            Sword sword = new Sword("Меч", 16, 100);
+            sword.Material = "Сталь";
+
+            Sword sword2 = new Sword("Меч", 53, 10);
+            sword.Material = "Стекляный";
+
+            Sword sword3 = new Sword("Heldock", 53, 10);
+            sword.Material = "Steel";
+
+            Player player = new Player("", 25);
+
+            player.Inventory = new List<ILoot>();
+
+            player.WeaponSlot1 = sword;
+            player.WeaponSlot2 = sword2;
+            player.Inventory.Add(sword3);
+
+            Sword sword4 = (Sword)player.Inventory[0].UseItem();
 
         }
 

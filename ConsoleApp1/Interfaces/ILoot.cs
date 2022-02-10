@@ -8,11 +8,6 @@ namespace PoshagPrototype
 {
     internal interface ILoot
     {
-        /* /// <summary>
-          /// Метод для описания добавления предмета
-          /// </summary>
-          void AddItem(ILoot obj);*/
-
         /// <summary>
         /// Метод для описания удаления предмета
         /// </summary>
@@ -21,6 +16,6 @@ namespace PoshagPrototype
         /// <summary>
         /// Метод для описания использования предмета
         /// </summary>
-        void UseItem();
+        ILoot UseItem();
     }
 }

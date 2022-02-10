@@ -29,9 +29,10 @@ namespace PoshagPrototype
             throw new System.NotImplementedException();
         }
 
-        public void GetDamage(int damage)
+        public int GetDamage(int damage)
         {
             Durability -= damage;
+            return Durability;
         }
 
         public void Destroy()
