@@ -19,7 +19,7 @@ namespace PoshagPrototype
             switch(typeOfDate)
             {
                 default:
-                    Console.WriteLine("Неизвестное числовое значение");
+                    Console.WriteLine("Неизвестное значение");
                     break;
                 case 0:
                     Console.WriteLine("Вы ввели неправильное числовое значение значение." +
@@ -30,6 +30,8 @@ namespace PoshagPrototype
                         "Попробуйте ещё раз");
                     break;
             }
+
+            Console.ReadKey();
         }
 
         /// <summary>

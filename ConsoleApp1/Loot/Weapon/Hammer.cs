@@ -8,7 +8,8 @@ namespace PoshagPrototype
 {
     internal class Hammer : Weapon
     {
-        public Hammer(string Name, int Damage, int Durability) : base(Name, Damage, Durability)
+        public Hammer(string name, int damage, int durability, int maxDurability) : 
+        base(name, damage, durability, maxDurability)
         {
         }
     }

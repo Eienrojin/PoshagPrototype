@@ -8,8 +8,12 @@ namespace PoshagPrototype
 {
     internal class Chestplate : Armor
     {
-        public Chestplate(string Name, int Durability) : base(Name, Durability)
+        public Chestplate(string name, int durability, int maxDurability, bool explodeImmunity) : 
+        base(name, durability, maxDurability)
         {
+            ExplodeImmunity = explodeImmunity;
         }
+
+        public bool ExplodeImmunity { get; set; }
     }
 }

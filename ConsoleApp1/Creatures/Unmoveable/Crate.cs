@@ -8,7 +8,7 @@ namespace PoshagPrototype
 {
     internal class Crate : Unmoveable
     {
-        public Crate(string name, int health) : base(name, health)
+        public Crate(string name, int health, int maxHealth) : base(name, health, maxHealth)
         {
         }
     }

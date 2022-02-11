@@ -8,7 +8,7 @@ namespace PoshagPrototype
 {
     internal class Player : Unit, IAction
     {
-        public Player(string name, int health) : base(name, health)
+        public Player(string name, int health, int maxHealth) : base(name, health, maxHealth)
         {
             if (name == "")
             {
@@ -16,50 +16,58 @@ namespace PoshagPrototype
             }
         }
 
-        public Weapon WeaponSlot1 {get; set;}
+        public Weapon WeaponSlot1 {get; set;} 
         public Weapon WeaponSlot2 {get; set;}
+        public Chestplate BodySlot { get; set; }
+        public Helmet HelmetSlot { get; set; }
 
         public void Destroy()
         {
+                if (Health <= 0)
             GameOver.ShowGameOver();
         }
 
         public void AskLowHP()
         {
-            string answer;
+            int answer;
 
             //Тестовая реализация сообщения о скорой смерти и предложения вылечиться
             if (Health < Health*0.3)
             {
                 Console.WriteLine("Осталось мало здоровья! Хотите принять лекарство?" +
-                    "\n - Да" +
-                    "\n - Нет\n");
+                    "\n1. - Да" +
+                    "\n2. - Нет");
 
-                answer = Console.ReadLine().Trim().ToLower();
+                answer = int.Parse(Console.ReadLine());
 
-                if (answer == "да")
+                if (answer == 1)
                 {
                     //Логика лечения
                 }
-                else if (answer == "нет")
+                else if (answer == 2)
                 {
                     Console.WriteLine("Чтож, тогда удачи");
                 }
                 else
                 {
-                    //Функция, которая выдает "Не понял что ты хочешь"
+                    Warning.ShowWarning(0);
                 }
+
+                Console.Clear();
             }
         }
 
-        public void GetDamage(int damage)
+        public void ShowInventory(Unit obj)
         {
-            throw new NotImplementedException();
-        }
+            Console.WriteLine($"Оружие в правой руке - {WeaponSlot1}. Урон - {WeaponSlot1.Damage}");
+            Console.WriteLine($"Оружие в левой руке - {WeaponSlot2}. Урон - {WeaponSlot2.Damage}");
+            Console.WriteLine($"Броня на теле - {BodySlot}. Прочность - {BodySlot.Durability}");
+            Console.WriteLine($"Шлем - {HelmetSlot}. Прочность - {HelmetSlot.Durability}");
 
-        public void Cure(int treatment)
-        {
-            throw new NotImplementedException();
+            foreach(ILoot items in obj.Inventory)
+            {
+                Console.WriteLine(items);
+            }
         }
 
         string GetName()

@@ -11,6 +11,21 @@ namespace PoshagPrototype
     /// </summary>
     internal abstract class Unit : IAction
     {
+        public Unit(string name, int health, int maxHealth)
+        {
+            Name = name;
+
+            if (health > maxHealth)
+            {
+                Health = maxHealth;
+            }
+
+            if (name == "")
+            {
+                Name = "Враг класса unit";
+            }
+        }
+
         /// <summary>
         /// Имя персонажа
         /// </summary>
@@ -20,22 +35,15 @@ namespace PoshagPrototype
         /// Количество здоровья
         /// </summary>
         public int Health { get; set; }
+        /// <summary>
+        /// Максимальное кол-во здоровья
+        /// </summary>
+        public int MaxHealth { get; set; }
 
         /// <summary>
         /// Инвентарь персонажа
         /// </summary>
         public List<ILoot> Inventory { get; set; }
-
-        public Unit(string name, int health)
-        {
-            Name = name;
-            Health = health;
-
-            if (name == "")
-            {
-                Name = "Враг класса unit";
-            }
-        }
 
         public void Destroy() 
         {
@@ -50,7 +58,14 @@ namespace PoshagPrototype
 
         public void Cure(int treatment)
         {
-            Health += treatment;
+            if (Health >= MaxHealth)
+            {
+                Console.WriteLine("У вас полное здоровье!");
+            }
+            else
+            {
+                Health += treatment;
+            }
         }
 
         public override string ToString()

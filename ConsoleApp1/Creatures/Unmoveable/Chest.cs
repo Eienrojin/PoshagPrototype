@@ -8,7 +8,7 @@ namespace PoshagPrototype
 {
     internal class Chest : Unmoveable
     {
-        public Chest(string name, int health) : base(name, health)
+        public Chest(string name, int health, int maxHealth) : base(name, health, maxHealth)
         {
         }
     }

@@ -1,32 +1,48 @@
-﻿namespace PoshagPrototype
+﻿using System;
+
+namespace PoshagPrototype
 {
     /// <summary>
     /// Абстрактный класс Броня
     /// </summary>
     internal abstract class Armor : IAction
     {
-        protected Armor(string Name, int Durability)
+        protected Armor(string name, int durability, int maxDurability)
         {
-            this.Name = Name;
-            this.Durability = Durability;
+            Name = name;
+            Durability = durability;
+            MaxDurability = maxDurability;
         }
 
         public string Name { get; set; }
+        public int MaxDurability { get; set; }
         public int Durability { get; set; }
 
         public void Cure(int treatment)
         {
-            throw new System.NotImplementedException();
+            Durability += treatment;
+
+            if (Durability > MaxDurability)
+            {
+                Durability = MaxDurability;
+
+                Console.WriteLine("Броня и так блестит, ремонт не нужен!");
+            }
+
+            Console.WriteLine("Вы подлатали броню");
         }
 
-        public void GetDamage(int damage)
+        public int GetDamage(int damage)
         {
-            throw new System.NotImplementedException();
+            return MaxDurability -= damage;
         }
 
         public void Destroy()
         {
-            throw new System.NotImplementedException();
+            if (Durability <= 0)
+            {
+                Console.WriteLine("Броня сломалась!");
+            }
         }
 
         public override string ToString()

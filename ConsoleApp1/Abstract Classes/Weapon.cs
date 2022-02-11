@@ -10,23 +10,42 @@ namespace PoshagPrototype
     {
         public int Damage { get; set; }
         public int Durability { get; set; }
+        public int MaxDurability { get; set; }
         public string Name { get; set; }
 
-        protected Weapon(string Name, int Damage, int Durability)
+        protected Weapon(string name, int damage, int durability, int maxDurability)
         {
-            this.Name = Name;
-            this.Damage = Damage;
-            this.Durability = Durability;
+            Damage = damage;
+            Durability = durability;
+            MaxDurability = maxDurability;
 
-            if (this.Name == "")
+            if(Durability > MaxDurability)
             {
-                this.Name = GetWeaponName();
+                Durability = MaxDurability;
+            }
+
+            if (Name == "")
+            {
+                Name = GetWeaponName();
+            }
+            else
+            {
+                Name = name;
             }
         }
 
         public void Cure(int treatment)
         {
-            throw new System.NotImplementedException();
+            Durability += treatment;
+
+            if(Durability > MaxDurability)
+            {
+                Durability = MaxDurability;
+
+                Console.WriteLine("Оружие как новое!");
+            }
+
+            Console.WriteLine("Вы заточили оружие");
         }
 
         public int GetDamage(int damage)

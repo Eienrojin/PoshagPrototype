@@ -8,7 +8,7 @@ namespace PoshagPrototype
 {
     internal class Helmet : Armor
     {
-        public Helmet(string Name, int Durability) : base(Name, Durability)
+        public Helmet(string name, int durability, int maxDurability) : base(name, durability, maxDurability)
         {
         }
     }

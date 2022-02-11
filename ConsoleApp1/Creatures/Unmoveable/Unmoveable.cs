@@ -6,25 +6,11 @@ using System.Threading.Tasks;
 
 namespace PoshagPrototype
 {
-    internal class Unmoveable : Unit
+    internal abstract class Unmoveable : Unit
     {
-        public Unmoveable(string Name, int Health) : base(Name, Health)
+        public Unmoveable(string name, int health, int maxHealth) : base(name, health, maxHealth)
         {
-        }
-
-        public void Cure(int treatment)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void GetDamage(int damage)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Destroy()
-        {
-            throw new NotImplementedException();
+            
         }
 
         public override string ToString()

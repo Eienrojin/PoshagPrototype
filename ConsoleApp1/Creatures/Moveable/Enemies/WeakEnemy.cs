@@ -8,7 +8,7 @@ namespace PoshagPrototype
 {
     internal class WeakEnemy : Unit
     {
-        public WeakEnemy(string name, int health) : base(name, health)
+        public WeakEnemy(string name, int health, int maxHealth) : base(name, health, maxHealth)
         {
             if (name == "")
             {

@@ -19,25 +19,14 @@ namespace PoshagPrototype
     {
         static void Main(string[] args)
         {
-            Sword sword = new Sword("Меч", 16, 100);
-            sword.Material = "Сталь";
+            MainMenu.ShowMenu();
 
-            Sword sword2 = new Sword("Меч", 53, 10);
-            sword.Material = "Стекляный";
+            Player player = new Player("Тестовый игрок", 500, 500);
 
-            Sword sword3 = new Sword("Heldock", 53, 10);
-            sword.Material = "Steel";
+            GetStartInventory(player);
+            player.ShowInventory(player);
 
-            Player player = new Player("", 25);
-
-            player.Inventory = new List<ILoot>();
-
-            player.WeaponSlot1 = sword;
-            player.WeaponSlot2 = sword2;
-            player.Inventory.Add(sword3);
-
-            Sword sword4 = (Sword)player.Inventory[0].UseItem();
-
+            Console.ReadKey();
         }
 
         static void Fight()
@@ -75,8 +64,29 @@ namespace PoshagPrototype
             }
         }
 
+        static void GetStartInventory(Player obj)
+        {
+            Sword startSword = new Sword("Меч", "Деревянный", 7, 8, 8);
+            Sword startSword2 = new Sword("Меч", "Деревянный", 5, 10, 10);
+            Chestplate startChestplate = new Chestplate("Балахон", 10, 14, false);
+            Helmet startHelmet = new Helmet("Повязка на голову", 4, 5);
+            Hammer startHammer = new Hammer("Рабочий молоток", 10, 20, 25);
+
+            obj.Inventory = new List<ILoot>();
+
+            obj.WeaponSlot1 = startSword;
+            obj.WeaponSlot2 = startSword2;
+            obj.BodySlot = startChestplate;
+            obj.HelmetSlot = startHelmet;
+            obj.Inventory.Add(startHammer);
+
+            /*Sword sword4 = (Sword)player.Inventory[0].UseItem();*/
+
+            obj.ShowInventory(obj);
+        }
+
         /// <summary>
-        /// Метод выводящий сообщение об ошибке о неправильном значении
+        /// Метод заполняющий массив с врагами. На выбор дается 3 типа врагов.
         /// </summary>
         /// <param name="typeOfEnemy">Тип врагов:
         /// <br> 0 - слабые </br>
@@ -91,19 +101,19 @@ namespace PoshagPrototype
                 case 0:
                     for (int i = 0; i < count; i++)
                     {
-                        arr[i] = new WeakEnemy("", 25);
+                        arr[i] = new WeakEnemy("", 25, 25);
                     }
                     break;
                 case 1:
                     for (int i = 0; i < count; i++)
                     {
-                        arr[i] = new MediumEnemy("", 25);
+                        arr[i] = new MediumEnemy("", 50, 50);
                     }
                     break;
                 case 2:
                     for (int i = 0; i < count; i++)
                     {
-                        arr[i] = new StrongEnemy("", 25);
+                        arr[i] = new StrongEnemy("", 100, 100);
                     }
                     break;
                 default:
@@ -138,15 +148,15 @@ namespace PoshagPrototype
                 Console.WriteLine(strongEnemy + "\n");
             }
 
-            Barrel barrel = new Barrel("Бочка", 32);
-            Chest chest = new Chest("Сундук", 21);
-            Crate crate = new Crate("Ящик", 21);
+            Barrel barrel = new Barrel("Бочка", 32, 34);
+            Chest chest = new Chest("Сундук", 21, 25);
+            Crate crate = new Crate("Ящик", 21, 25);
 
-            Chestplate chestplate = new Chestplate("Железная кираса", 20);
-            Helmet helmet = new Helmet("Железный шлем", 30);
+            Chestplate chestplate = new Chestplate("Железная кираса", 20, 500, true);
+            Helmet helmet = new Helmet("Железный шлем", 4,30);
 
-            Hammer hammer = new Hammer("Железный молот", 3, 5);
-            Sword sword = new Sword("Железный меч", 5, 5);
+            Hammer hammer = new Hammer("Молот", 3, 5, 10);
+            Sword sword = new Sword("Меч", "Железный", 5, 50, 150);
 
             Console.WriteLine(barrel);
             Console.WriteLine(chest);
