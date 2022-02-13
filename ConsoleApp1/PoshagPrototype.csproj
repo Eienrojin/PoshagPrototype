@@ -44,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract Classes\Armor.cs" />
+    <Compile Include="Creatures\Moveable\Players\Player.cs" />
+    <Compile Include="Creatures\Moveable\Players\PlayerOrk.cs" />
     <Compile Include="Creatures\Unmoveable\Barrel.cs" />
     <Compile Include="Creatures\Unmoveable\Chest.cs" />
     <Compile Include="Creatures\Unmoveable\Crate.cs" />
@@ -57,7 +59,7 @@
     <Compile Include="Interfaces\ILoot.cs" />
     <Compile Include="Abstract Classes\Loot.cs" />
     <Compile Include="Creatures\Moveable\Enemies\MediumEnemy.cs" />
-    <Compile Include="Creatures\Moveable\Players\Player.cs" />
+    <Compile Include="Creatures\Moveable\Players\PlayerHuman.cs" />
     <Compile Include="Menu\MainMenu.cs" />
     <Compile Include="Menu\Warning.cs" />
     <Compile Include="Program.cs" />

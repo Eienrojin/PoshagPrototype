@@ -12,7 +12,7 @@ namespace PoshagPrototype
         {
         }
 
-        public void Explode(Player obj)
+        public void Explode(PlayerHuman obj)
         {
             if(!obj.BodySlot.ExplodeImmunity)
             {

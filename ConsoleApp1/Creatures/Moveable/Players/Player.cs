@@ -10,21 +10,29 @@ namespace PoshagPrototype
     {
         public Player(string name, int health, int maxHealth) : base(name, health, maxHealth)
         {
-            if (name == "")
-            {
-                Name = GetName();
-            }
         }
 
-        public Weapon WeaponSlot1 {get; set;} 
-        public Weapon WeaponSlot2 {get; set;}
+        public Weapon WeaponSlot1 { get; set; }
         public Chestplate BodySlot { get; set; }
         public Helmet HelmetSlot { get; set; }
+        private int CountOfDamage { get; set; }
 
-        public void Destroy()
+        public void Destroy(Unit obj)
         {
-                if (Health <= 0)
-            GameOver.ShowGameOver();
+            if (Health <= 0)
+                GameOver.ShowGameOver();
+
+            ShowStatistic(obj);
+        }
+
+        //ПОМЕНЯТЬ
+        /*Реализовать вывод всего нанесенного игроком урона в течение игры
+         а так же характеристики последнего врага*/
+        void ShowStatistic(Unit obj)
+        {
+            Console.WriteLine($"Всего нанесено урона: {CountOfDamage}");
+
+            Console.WriteLine($"Характеристики текущего врага: {obj}");
         }
 
         public void AskLowHP()
@@ -32,7 +40,7 @@ namespace PoshagPrototype
             int answer;
 
             //Тестовая реализация сообщения о скорой смерти и предложения вылечиться
-            if (Health < Health*0.3)
+            if (Health < Health * 0.3)
             {
                 Console.WriteLine("Осталось мало здоровья! Хотите принять лекарство?" +
                     "\n1. - Да" +
@@ -57,33 +65,27 @@ namespace PoshagPrototype
             }
         }
 
+        public int GetDamage(int damage)
+        {
+            Health -= damage;
+            return Health;
+        }
+
         public void ShowInventory(Unit obj)
         {
             Console.WriteLine($"Оружие в правой руке - {WeaponSlot1}. Урон - {WeaponSlot1.Damage}");
-            Console.WriteLine($"Оружие в левой руке - {WeaponSlot2}. Урон - {WeaponSlot2.Damage}");
             Console.WriteLine($"Броня на теле - {BodySlot}. Прочность - {BodySlot.Durability}");
             Console.WriteLine($"Шлем - {HelmetSlot}. Прочность - {HelmetSlot.Durability}");
 
-            foreach(ILoot items in obj.Inventory)
+            foreach (ILoot items in obj.Inventory)
             {
                 Console.WriteLine(items);
             }
         }
 
-        string GetName()
-        {
-            Random random = new Random();
-
-            string[] names = { "Игорь", "Васян", "Вано", "Кирилл", "Шрам", "Неизвестный" };
-
-            string name = names[random.Next(0, names.Length)];
-
-            return name;
-        }
-
         public override string ToString()
         {
             return $"Вы - {Name}\n Здоровье = {Health}\n";
-        } 
+        }
     }
 }
