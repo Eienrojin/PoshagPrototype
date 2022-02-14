@@ -5,7 +5,7 @@ namespace PoshagPrototype
     /// <summary>
     /// Абстрактный класс Броня
     /// </summary>
-    internal abstract class Armor : IAction
+    internal abstract class Armor : Loot, IAction
     {
         protected Armor(string name, int durability, int maxDurability)
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PoshagPrototype
 {
-    internal class MediumEnemy : Unit
+    internal class MediumEnemy : Enemies
     {
         public MediumEnemy(string name, int health, int maxHealth) : base(name, health, maxHealth)
         {
@@ -20,7 +20,7 @@ namespace PoshagPrototype
         {
             Random random = new Random();
 
-            string[] names = { "Волк", "Лис", "Молодой бандит" };
+            string[] names = { "Гоблин", "Молодой бандит" };
 
             string randomName = names[random.Next(0, names.Length)];
 

@@ -47,7 +47,7 @@ namespace PoshagPrototype
         /// <summary>
         /// Инвентарь персонажа
         /// </summary>
-        public List<ILoot> Inventory { get; set; }
+        public List<Loot> Inventory { get; set; }
 
         public void Destroy() 
         {

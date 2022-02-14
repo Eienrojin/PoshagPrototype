@@ -11,11 +11,11 @@ namespace PoshagPrototype
         /// <summary>
         /// Метод для описания удаления предмета
         /// </summary>
-        void RemoveItem(int index, List<ILoot> obj);
+        void RemoveItem(int index, List<Loot> obj);
 
         /// <summary>
         /// Метод для описания использования предмета
         /// </summary>
-        ILoot UseItem();
+        Loot UseItem();
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PoshagPrototype
 {
-    internal class WeakEnemy : Unit
+    internal class WeakEnemy : Enemies
     {
         public WeakEnemy(string name, int health, int maxHealth) : base(name, health, maxHealth)
         {
@@ -20,7 +20,7 @@ namespace PoshagPrototype
         {
             Random random = new Random();
 
-            string[] names = { "Крыса", "Таракан", "Микропёс" };
+            string[] names = { "Гоблин", "Карлик" };
 
             string randomName = names[random.Next(0, names.Length)];
 

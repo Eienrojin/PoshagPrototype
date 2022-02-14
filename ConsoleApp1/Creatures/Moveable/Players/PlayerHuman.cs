@@ -20,10 +20,10 @@ namespace PoshagPrototype
 
         public new void ShowInventory(Unit obj)
         {
-            Console.WriteLine($"Оружие в правой руке - {WeaponSlot1}. Урон - {WeaponSlot1.Damage}");
-            Console.WriteLine($"Оружие в левой руке - {WeaponSlot2}. Урон - {WeaponSlot2.Damage}");
-            Console.WriteLine($"Броня на теле - {BodySlot}. Прочность - {BodySlot.Durability}");
-            Console.WriteLine($"Шлем - {HelmetSlot}. Прочность - {HelmetSlot.Durability}");
+            Console.WriteLine($"Оружие в правой руке - {WeaponSlot1}");
+            Console.WriteLine($"Оружие в левой руке - {WeaponSlot2}");
+            Console.WriteLine($"Броня на теле - {BodySlot}");
+            Console.WriteLine($"Шлем - {HelmetSlot}");
 
             foreach (ILoot items in obj.Inventory)
             {

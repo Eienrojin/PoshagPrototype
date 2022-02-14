@@ -8,7 +8,7 @@ namespace PoshagPrototype
     /// </summary>
     internal class Loot : ILoot
     {
-        public void RemoveItem(int index, List<ILoot> obj)
+        public void RemoveItem(int index, List<Loot> obj)
         {
             while (true)
             {
@@ -42,7 +42,7 @@ namespace PoshagPrototype
             }
         }
 
-        public ILoot UseItem()
+        public Loot UseItem()
         {
             return this;
         }

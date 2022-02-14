@@ -16,7 +16,14 @@ namespace PoshagPrototype
             }
         }
 
-        string GetName()
+        int GetFistDamage()
+        {
+            Random random = new Random();
+
+            return random.Next(1, 14);
+        }
+
+        private string GetName()
         {
             Random random = new Random();
 

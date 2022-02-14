@@ -1,11 +1,6 @@
 ﻿//Реализовано:
-//Классы врагов
-
-//Сделать
-//Боёвку
-//Инвентарь
-//Использование предметов
-//Проверку ответов пользователя
+//Бой одного игрока с врагом определенного типа
+//
 
 using System;
 using System.Collections.Generic;
@@ -17,34 +12,39 @@ namespace PoshagPrototype
 {
     internal class Program
     {
+        static int countOfDamage = 0;
+
         static void Main(string[] args)
         {
-            int countOfDamage = 0;
             int choicePlayer;
-            int answer = -1;
 
-            ShowMenu(answer);
-            choicePlayer = ChoicePlayer(answer);
+            MainMenu.ShowMenu();
+            choicePlayer = MainMenu.ChoicePlayer();
 
+            Console.WriteLine("Выбора нет, автор не смог прописать");
 
+            PlayerHuman player = new PlayerHuman("", 30, 30);
+            GetStartInventory(player);
+
+            Fight(player);
         }
 
-        /// <summary>
-        /// Выдает начальное снаряжение выбранному игроку
-        /// </summary>
         static void GetStartInventory(PlayerOrk obj)
         {
             Chestplate startChestplate = new Chestplate("Балахон", 10, 14, false);
             Helmet startHelmet = new Helmet("Повязка на голову", 4, 5);
             Hammer startHammer = new Hammer("Рабочий молоток", 10, 20, 25);
 
-            obj.Inventory = new List<ILoot>();
+            obj.Inventory = new List<Loot>();
 
             obj.WeaponSlot1 = startHammer;
             obj.BodySlot = startChestplate;
             obj.HelmetSlot = startHelmet;
         }
 
+        /// <summary>
+        /// Выдает начальное снаряжение выбранному игроку
+        /// </summary>
         static void GetStartInventory(PlayerHuman obj)
         {
             Sword startSword = new Sword("Меч", "Стальной", 7, 25, 30);
@@ -52,7 +52,7 @@ namespace PoshagPrototype
             Chestplate startChestplate = new Chestplate("Балахон", 10, 14, false);
             Helmet startHelmet = new Helmet("Повязка на голову", 4, 5);
 
-            obj.Inventory = new List<ILoot>();
+            obj.Inventory = new List<Loot>();
 
             obj.WeaponSlot1 = startSword;
             obj.WeaponSlot2 = startSword2;
@@ -69,6 +69,8 @@ namespace PoshagPrototype
         /// <br> 2 - сильные </br></param>
         static void FillUnitArray(Unit[] arr, int count, int typeOfEnemy)
         {
+            Random random = new Random();
+
             SystemException systemException = new SystemException("Нет такого типа врагов");
 
             switch (typeOfEnemy)
@@ -77,18 +79,29 @@ namespace PoshagPrototype
                     for (int i = 0; i < count; i++)
                     {
                         arr[i] = new WeakEnemy("", 25, 25);
+                        arr[i].Inventory = new List<Loot>();
+
+                        //Добавление молота в инвентарь, меча в первый слот
+                        (arr[i] as Enemies).WeaponSlot1 = new Sword("Меч", "Железный", random.Next(6, 15), random.Next(20, 30), 30);
+
                     }
                     break;
                 case 1:
                     for (int i = 0; i < count; i++)
                     {
                         arr[i] = new MediumEnemy("", 50, 50);
+
+                        //Добавление меча в первый слот
+                        (arr[i] as Enemies).WeaponSlot1 = new Sword("Меч", "", random.Next(6, 15), random.Next(20, 30), 30);
                     }
                     break;
                 case 2:
                     for (int i = 0; i < count; i++)
                     {
                         arr[i] = new StrongEnemy("", 100, 100);
+
+                        //Добавление молота в первый слот
+                        (arr[i] as Enemies).WeaponSlot1 = new Hammer("Меч", random.Next(12, 20), random.Next(20, 30), 30); ;
                     }
                     break;
                 default:
@@ -97,36 +110,63 @@ namespace PoshagPrototype
             }
         }
 
-        static void Fight(Player player)
+        //Метод, в котором описывается процесс битвы
+        static void Fight(PlayerHuman player)
         {
-            Random random = new Random();
             int countOfEnemies = 5;
             int numOfEnemy = countOfEnemies - 1;
-            Unit[] enemies = new Unit[countOfEnemies];
 
+            Unit[] enemies = new Unit[countOfEnemies];
+            Random random = new Random();
+
+            //Заполнение массива врагами рандомного типа
             FillUnitArray(enemies, countOfEnemies, random.Next(0, 2));
 
             while (numOfEnemy != -1)
             {
+                int answer = -1;
+
                 Console.WriteLine(player);
+                Console.WriteLine(enemies[numOfEnemy]);
                 Console.WriteLine("Сделайте выбор\n" +
                     "1. Ударить\n" +
                     "2. Открыть инвентарь\n" +
                     "3. ТЕСТ Вывести все обьекты\n" +
                     "4. Выйти из игры");
 
-                int answer = int.Parse(Console.ReadLine());
+                try
+                {
+                    answer = int.Parse(Console.ReadLine());
+                }
+                catch (FormatException)
+                {
+                    Warning.ShowWarning(0);
+                    Console.Clear();
+                }
 
                 switch (answer)
                 {
                     case 1:
-                        if (player is PlayerOrk)
-                            enemies[numOfEnemy].GetDamage(player.WeaponSlot1.Damage);
-
-                        if (((PlayerHuman)player).WeaponSlot2 != null)
+                        if (player.WeaponSlot1.Durability > 0)
                         {
-                            enemies[numOfEnemy].GetDamage(((PlayerHuman)player).WeaponSlot2.Damage);
+                            countOfDamage += player.WeaponSlot1.Damage;
+                            enemies[numOfEnemy].GetDamage(player.WeaponSlot1.Damage);
                         }
+                        else
+                        {
+                            Console.WriteLine("Оружие в правой руке сломалось! Замените его");
+                        }
+
+                        if (player.WeaponSlot2.Durability > 0)
+                        {
+                            countOfDamage += player.WeaponSlot2.Damage;
+                            countOfDamage += enemies[numOfEnemy].GetDamage((player).WeaponSlot2.Damage);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Оружие в правой руке сломалось! Замените его");
+                        }
+
                         break;
                     case 2:
                         player.ShowInventory(player);
@@ -139,13 +179,17 @@ namespace PoshagPrototype
                         break;
                 }
 
-
+                player.GetDamage((enemies[numOfEnemy] as Enemies).WeaponSlot1.Damage);
 
                 if (enemies[numOfEnemy].Health <= 0)
                 {
-                    enemies[numOfEnemy].Destroy();
+                    (enemies[numOfEnemy] as Enemies).Destroy(player, enemies[numOfEnemy] as Enemies);
                     numOfEnemy--;
                 }
+
+                player.Destroy(countOfDamage, enemies[numOfEnemy] as Enemies);
+
+                Console.Clear();
             }
 
             Console.WriteLine("Враги побеждены");
@@ -190,144 +234,6 @@ namespace PoshagPrototype
             Console.WriteLine(sword);
 
             Console.ReadKey();
-        }
-
-        //Раздел с меню. Не перенес в отдельный класс, потому что были беды с созданием выбранного игрока
-        static void ShowLogo()
-        {
-            string _logo = @" ▄▄▄·      .▄▄ ·  ▄ .▄ ▄▄▄·  ▄▄ • 
-▐█ ▄█▪     ▐█ ▀. ██▪▐█▐█ ▀█ ▐█ ▀ ▪
- ██▀· ▄█▀▄ ▄▀▀▀█▄██▀▐█▄█▀▀█ ▄█ ▀█▄
-▐█▪·•▐█▌.▐▌▐█▄▪▐███▌▐▀▐█ ▪▐▌▐█▄▪▐█
-.▀    ▀█▄▀▪ ▀▀▀▀ ▀▀▀ · ▀  ▀ ·▀▀▀▀ 
-▄▄▄▄· ▄▄▄ .▄▄▄▄▄ ▄▄▄·             
-▐█ ▀█▪▀▄.▀·•██  ▐█ ▀█             
-▐█▀▀█▄▐▀▀▪▄ ▐█.▪▄█▀▀█             
-██▄▪▐█▐█▄▄▌ ▐█▌·▐█ ▪▐▌            
-·▀▀▀▀  ▀▀▀  ▀▀▀  ▀  ▀             
-
-";
-
-            Console.WriteLine(_logo);
-        }
-
-        static int InitAndCheckAnswer()
-        {
-            int answer = -1;
-
-            try
-            {
-                answer = int.Parse(Console.ReadLine());
-            }
-            catch (FormatException)
-            {
-                Warning.ShowWarning(0);
-                Console.Clear();
-            }
-            return answer;
-        }
-
-
-        static void ShowMenu(int answer)
-        {
-            while (true)
-            {
-                ShowLogo();
-
-                Console.WriteLine("Добро пожаловать в прототип Пошага." +
-                    "\n1. Начать игру" +
-                    "\n2. Показать правила" +
-                    "\n3. Выйти");
-
-                answer = InitAndCheckAnswer();
-
-                switch (answer)
-                {
-                    default:
-                        if (answer != 1)
-                            Console.WriteLine("Такого варианта нет");
-                        break;
-                    case 2:
-                        ShowRules();
-                        break;
-                    case 3:
-                        Environment.Exit(0);
-                        break;
-                }
-
-                if (answer == 1)
-                {
-                    break;
-                }
-            }
-
-        }
-
-        private static void ShowRules()
-        {
-            Console.Clear();
-
-            Console.WriteLine("Правила и обьяснение игры:" +
-                "\nЭта игра - последовательная боевка с врагами разной сложности." +
-                "\nНа выбор дается 3 героя с разной историей и характеристиками " +
-                "\n(подробнее о каждом герое в самой игре)" +
-                "\n\nЕсть 3 типа врагов: слабые, средние и мощные. " +
-                "\nС каждого врага может упасть лут в виде брони или оружия");
-
-            Console.ReadKey();
-
-            Console.Clear();
-        }
-
-        static int ChoicePlayer(int answer)
-        {
-            bool choiced = false;
-
-            while (!choiced)
-            {
-                Console.Clear();
-                ShowLogo();
-
-                Console.WriteLine("Выберите бойца");
-                Console.WriteLine("1. Человек - акробат. Выходец из деревни и ловкий боец." +
-                    "\nМожет орудовать двумя руками, но хилый. " +
-                    "\nПри себе имеет старую одежду и мечи, которые он хотел сдать на металл.");
-
-                Console.WriteLine("\n2. Орк - сильный дурак. Выходец из племени." +
-                    "\nМожет бить со страшной силой, имеет повышенное здоровье." +
-                    "\nПри себе носит одежду и старый молот");
-
-                Console.WriteLine("\n3. Эльф. Вышел из дома." +
-                    "\nМожет уклоняться и не получать урон. Самый слабый из всей тройки" +
-                    "\nПри себе носит одежду и меч" +
-                    "\n\nЗа кого будем играть?");
-
-                answer = InitAndCheckAnswer();
-
-                switch (answer)
-                {
-                    default:
-                        Console.WriteLine("Такого варианта нет");
-                        break;
-                    case 1:
-                        PlayerHuman playerHuman = new PlayerHuman("", 400, 400);
-                        choiced = true;
-                        break;
-                    case 2:
-                        PlayerOrk playerOrk = new PlayerOrk("", 700, 700);
-                        choiced = true;
-                        break;
-                    case 3:
-                        //PlayerElf playerElf = new PlayerElf("", 200, 200)
-                        choiced = true;
-                        break;
-                }
-            }
-
-            return answer;
-        }
+        }    
     }
 }
-
-
-

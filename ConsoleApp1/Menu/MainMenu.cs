@@ -1,4 +1,4 @@
-﻿/*using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +10,7 @@ namespace PoshagPrototype
     {
         private static int _answer;
         private static bool _safe = true;
+
         private static void ShowLogo()
         {
             string _logo = @" ▄▄▄·      .▄▄ ·  ▄ .▄ ▄▄▄·  ▄▄ • 
@@ -27,7 +28,7 @@ namespace PoshagPrototype
             Console.WriteLine(_logo);
         }
 
-        static void InitAndCheckAsw()
+        private static void InitAndCheckAsw()
         {
             try
             {
@@ -41,7 +42,7 @@ namespace PoshagPrototype
             }
         }
 
-        static void ShowMenu()
+        public static void ShowMenu()
         {
             while (true)
             {
@@ -61,7 +62,7 @@ namespace PoshagPrototype
                     switch (_answer)
                     {
                         default:
-                            if(_answer != 1)
+                            if (_answer != 1)
                                 Console.WriteLine("Такого варианта нет");
                             break;
                         case 2:
@@ -80,7 +81,7 @@ namespace PoshagPrototype
             }
         }
 
-        static void ShowRules()
+        private static void ShowRules()
         {
             Console.Clear();
 
@@ -96,11 +97,9 @@ namespace PoshagPrototype
             Console.Clear();
         }
 
-        static bool ChoicePlayer()
+        public static int ChoicePlayer()
         {
-            bool choiced = false;
-
-            while (!choiced)
+            while (true)
             {
                 _safe = true;
 
@@ -131,22 +130,17 @@ namespace PoshagPrototype
                             Console.WriteLine("Такого варианта нет");
                             break;
                         case 1:
-                            PlayerHuman playerHuman = new PlayerHuman("", 400, 400);
-                            choiced = true;
+                            return 1;
                             break;
                         case 2:
-                            PlayerOrk playerOrk = new PlayerOrk("", 700, 700);
-                            choiced = true;
+                            return 2;
                             break;
                         case 3:
-                            //PlayerElf playerElf = new PlayerElf("", 200, 200)
-                            choiced = true;
+                            return 3;
                             break;
-
                     }
                 }
             }
         }
     }
 }
-*/
