@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PoshagPrototype
 {
-    internal class Player : Unit, IAction
+    internal abstract class Player : Unit, IAction
     {
         public Player(string name, int health, int maxHealth) : base(name, health, maxHealth)
         {
@@ -15,6 +15,30 @@ namespace PoshagPrototype
         public Weapon WeaponSlot1 { get; set; }
         public Chestplate BodySlot { get; set; }
         public Helmet HelmetSlot { get; set; }
+
+        public abstract void GetStartInventory();
+
+        new public void Cure(int treatment)
+        {
+            if (Health >= MaxHealth)
+            {
+                Health = MaxHealth;
+                Console.WriteLine("Вы здоровы!");
+            }
+            else
+            {
+                Health += treatment;
+
+                if(Health > MaxHealth)
+                {
+                    Health = MaxHealth;
+
+                    Console.WriteLine("Вы полностью выздоровели!");
+                }
+
+                Console.WriteLine("Вы попросили противника подождать и перевязали свои раны");
+            }
+        }
 
         public void AskLowHP()
         {
@@ -39,7 +63,7 @@ namespace PoshagPrototype
                 }
                 else
                 {
-                    Warning.ShowWarning(0);
+                    Warning.ShowWarning();
                 }
 
                 Console.Clear();

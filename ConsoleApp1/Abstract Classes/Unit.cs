@@ -14,6 +14,7 @@ namespace PoshagPrototype
         public Unit(string name, int health, int maxHealth)
         {
             Name = name;
+            MaxHealth = maxHealth;
 
             if (health > maxHealth)
             {
@@ -22,11 +23,6 @@ namespace PoshagPrototype
             else
             {
                 Health = health;
-            }
-
-            if (name == "")
-            {
-                Name = "Существо класса unit";
             }
         }
 
@@ -49,9 +45,12 @@ namespace PoshagPrototype
         /// </summary>
         public List<Loot> Inventory { get; set; }
 
-        public void Destroy() 
+        public void Destroy()
         {
-            Console.WriteLine("Существо погибло!");
+            if (Health <= 0)
+            {
+                Console.WriteLine("Существо погибло");
+            }
         }
 
         public int GetDamage(int damage)
@@ -64,7 +63,7 @@ namespace PoshagPrototype
         {
             if (Health >= MaxHealth)
             {
-                Console.WriteLine("У вас полное здоровье!");
+                Console.WriteLine("У существа полное здоровье!");
                 Health = MaxHealth;
             }
             else

@@ -44,13 +44,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract Classes\Armor.cs" />
-    <Compile Include="Creatures\Moveable\Enemies\Enemies.cs" />
-    <Compile Include="Creatures\Moveable\Players\Player.cs" />
+    <Compile Include="Abstract Classes\Enemies.cs" />
+    <Compile Include="Abstract Classes\Player.cs" />
+    <Compile Include="Menu\Battle.cs" />
     <Compile Include="Creatures\Moveable\Players\PlayerOrk.cs" />
     <Compile Include="Creatures\Unmoveable\Barrel.cs" />
     <Compile Include="Creatures\Unmoveable\Chest.cs" />
     <Compile Include="Creatures\Unmoveable\Crate.cs" />
-    <Compile Include="Creatures\Unmoveable\Unmoveable.cs" />
+    <Compile Include="Abstract Classes\Unmoveable.cs" />
     <Compile Include="Loot\Armor\Chestplate.cs" />
     <Compile Include="Loot\Armor\Helmet.cs" />
     <Compile Include="Loot\Weapon\Hammer.cs" />

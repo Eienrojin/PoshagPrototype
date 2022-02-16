@@ -23,11 +23,12 @@ namespace PoshagPrototype
                 catch (FormatException)
                 {
                     isSafe = false;
-                    Warning.ShowWarning(0);
+                    Warning.ShowWarning();
                 }
 
                 if (isSafe)
                 {
+                    //Нет реализации
                     break;
                 }
             }

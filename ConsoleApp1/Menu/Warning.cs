@@ -11,25 +11,10 @@ namespace PoshagPrototype
         /// <summary>
         /// Метод выводящий сообщение об ошибке о неправильном значении
         /// </summary>
-        /// <param name="typeOfDate">Тип проверяемых данных:
-        /// <br> 0 - int </br>
-        /// <br> 1 - string </br> </param>
-        public static void ShowWarning(int typeOfDate)
+        public static void ShowWarning()
         {
-            switch(typeOfDate)
-            {
-                default:
-                    Console.WriteLine("Неизвестное значение");
-                    break;
-                case 0:
-                    Console.WriteLine("Вы ввели неправильное числовое значение значение." +
-                        "Попробуйте ещё раз");
-                    break;
-                case 1:
-                    Console.WriteLine("Вы ввели неправильное текстовое значение значение." +
-                        "Попробуйте ещё раз");
-                    break;
-            }
+            Console.WriteLine("Вы ввели неправильное числовое значение значение." +
+                "Попробуйте ещё раз");
 
             Console.ReadKey();
         }

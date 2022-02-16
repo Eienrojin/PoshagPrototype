@@ -15,22 +15,14 @@ namespace PoshagPrototype
 
         protected Weapon(string name, int damage, int durability, int maxDurability)
         {
+            Name = name;
             Damage = damage;
             Durability = durability;
             MaxDurability = maxDurability;
 
-            if(Durability > MaxDurability)
+            if (Durability > MaxDurability)
             {
                 Durability = MaxDurability;
-            }
-
-            if (Name == "")
-            {
-                Name = GetWeaponName();
-            }
-            else
-            {
-                Name = name;
             }
         }
 
@@ -57,17 +49,6 @@ namespace PoshagPrototype
         public void Destroy()
         {
             throw new System.NotImplementedException();
-        }
-
-        static string GetWeaponName()
-        {
-            Random random = new Random();
-
-            string[] names = { "Заточка", "Ржавый гвоздь", "Кривой меч", "Острый кактус", "Красивый болт", "Новый дрын" };
-
-            string name = names[random.Next(0, names.Length)];
-
-            return name;
         }
 
         public override string ToString()

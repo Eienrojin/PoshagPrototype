@@ -28,17 +28,29 @@ namespace PoshagPrototype
             Console.WriteLine(_logo);
         }
 
-        private static void InitAndCheckAsw()
+        public static int InitAndCheckAsw()
         {
+            int value = -1;
+            bool safe = true;
+
             try
             {
-                _answer = int.Parse(Console.ReadLine());
+                value = int.Parse(Console.ReadLine());
             }
             catch (FormatException)
             {
-                Warning.ShowWarning(0);
+                Warning.ShowWarning();
                 Console.Clear();
-                _safe = false;
+                safe = false;
+            }
+
+            if (safe)
+            {
+                return value;
+            }
+            else
+            {
+                return -1;
             }
         }
 
@@ -55,29 +67,26 @@ namespace PoshagPrototype
                     "\n2. Показать правила" +
                     "\n3. Выйти");
 
-                InitAndCheckAsw();
+                _answer = InitAndCheckAsw();
 
-                if (_safe)
+                switch (_answer)
                 {
-                    switch (_answer)
-                    {
-                        default:
-                            if (_answer != 1)
-                                Console.WriteLine("Такого варианта нет");
-                            break;
-                        case 2:
-                            ShowRules();
-                            break;
-                        case 3:
-                            Environment.Exit(0);
-                            break;
-                    }
-
-                    if (_answer == 1)
-                    {
+                    default:
+                        Console.WriteLine("Такого варианта нет");
                         break;
-                    }
+                    case 2:
+                        ShowRules();
+                        break;
+                    case 3:
+                        Environment.Exit(0);
+                        break;
                 }
+
+                if (_answer == 1)
+                {
+                    break;
+                }
+
             }
         }
 
@@ -120,7 +129,7 @@ namespace PoshagPrototype
                     "\nПри себе носит одежду и меч" +
                     "\n\nЗа кого будем играть?");
 
-                InitAndCheckAsw();
+                _answer = InitAndCheckAsw();
 
                 if (_safe)
                 {
@@ -131,13 +140,10 @@ namespace PoshagPrototype
                             break;
                         case 1:
                             return 1;
-                            break;
                         case 2:
                             return 2;
-                            break;
                         case 3:
                             return 3;
-                            break;
                     }
                 }
             }

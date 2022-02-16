@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PoshagPrototype
 {
-    internal class Enemies : Unit
+    internal abstract class Enemies : Unit
     {
         public Enemies(string name, int health, int maxHealth) : base(name, health, maxHealth)
         {
@@ -18,21 +18,22 @@ namespace PoshagPrototype
 
         public Weapon WeaponSlot1 { get; set; }
 
-        public void Destroy(Player player, Enemies enemy)
+        new public void Destroy()
         {
-            Console.WriteLine("Существо погибло!");
-
-            GetEnemyItems(player, enemy);
+            if (Health <= 0)
+            {
+                Console.WriteLine($"{Name} уничтожен!");
+            }
         }
 
-        private void GetEnemyItems(Player player, Enemies enemy)
+        public void GetEnemyItems(Player player)
         {
             int answer = -1;
 
             while (true)
             {
-                Console.WriteLine("Хотите взять все его вещи?" +
-                 $"\n{enemy.WeaponSlot1}" +
+                Console.WriteLine("Хотите взять его вещи?" +
+                 $"\n{WeaponSlot1}" +
                  $"\n1. Да" +
                  $"\n2. Нет");
 
@@ -42,7 +43,7 @@ namespace PoshagPrototype
                 }
                 catch (FormatException)
                 {
-                    Warning.ShowWarning(0);
+                    Warning.ShowWarning();
                     Console.Clear();
                 }
 
@@ -55,10 +56,6 @@ namespace PoshagPrototype
                 if (answer == 2)
                 {
                     break;
-                }
-                else
-                {
-                    Warning.ShowWarning(0);
                 }
             }
         }

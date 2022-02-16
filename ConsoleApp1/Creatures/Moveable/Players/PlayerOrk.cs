@@ -34,6 +34,15 @@ namespace PoshagPrototype
             return name;
         }
 
+        public override void GetStartInventory()
+        {
+            Inventory = new List<Loot>();
+
+            WeaponSlot1 = new Hammer("Рабочий молоток", 10, 20, 25);
+            BodySlot = new Chestplate("Балахон", 10, 14, false);
+            HelmetSlot = new Helmet("Повязка на голову", 4, 5);
+        }
+
         public override string ToString()
         {
             return $"Вы орк - {Name}\n Здоровье = {Health}\n";
